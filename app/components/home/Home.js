@@ -10,10 +10,13 @@ const Home = () => {
   const handleAddStudent = (student) => {
     setStudents([...students, { ...student, id: Date.now() }]);
   };
-
-  const handleUpdateStudent = (id) => {
-    // Implement your update logic here
-    console.log(`Update student with ID: ${id}`);
+  const handleUpdateStudent = (id, updatedName, updatedAge) => {
+    // Update the student in the state
+    setStudents((prevStudents) =>
+      prevStudents.map((student) =>
+        student.id === id ? { ...student, name: updatedName, age: updatedAge } : student
+      )
+    );
   };
 
   const handleDeleteStudent = (id) => {
