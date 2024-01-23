@@ -30,3 +30,17 @@ export const GET = async (req) => {
         return NextResponse.json({ message: 'something went wrong' });
     }
 };
+
+export const PUT = async(req)=>{
+    try {
+        const body = await req.json();
+        console.log('body',body);
+        await studentModel.updateOne({_id:body.id},body)
+        return NextResponse.json({ message: "successfully product created" })
+    } catch (error) {
+        return NextResponse.json({
+            message: "something went wrong",
+            error: JSON.stringify(error)
+        })
+    }
+}

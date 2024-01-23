@@ -18,10 +18,40 @@ const StudentList = ({ students, onUpdate, onDelete }) => {
     setEditName('');
     setEditAge('');
   };
+  const handleUpdateClick = async (id) => {
+    try {
+      const updatedStudent = {
+        id: id,
+        name: editName,
+        age: editAge
+      };
 
-  const handleUpdateClick = (id) => {
-    onUpdate(id, editName, editAge);
-    handleCancelClick();
+      const requestOptions = {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedStudent),
+      };
+
+      const response = await fetch(`http://localhost:3000/api/students/${id}`, requestOptions);
+
+      if (!response.ok) {
+        throw new Error('Failed to update student');
+      }
+
+      // If the update is successful, call the onUpdate function to update the state in the parent component
+      onUpdate(id, editName, editAge);
+
+      // Reset the edit state
+      handleCancelClick();
+
+      // Display success message
+      alert('Update successful');
+    } catch (error) {
+      console.error('Error updating student:', error);
+      alert('Update failed. Please try again.');
+    }
   };
 
   return (
