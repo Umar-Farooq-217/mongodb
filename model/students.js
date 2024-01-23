@@ -4,7 +4,7 @@ const {Schema} = mongoose;
 
 const studentSchema = new Schema({
     name: {type:String, required:true},
-    age:Number
-})
-
+    age:Number,
+   
+});
 export const studentModel = mongoose.models?.students || mongoose.model('students',studentSchema)
