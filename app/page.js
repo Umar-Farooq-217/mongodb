@@ -79,6 +79,19 @@ export default function page() {
   //     alert('Error fetching students. Please check the console for details.');
   //   }
   };
+  const [data , setData]= useState([])
+ const getData= async()=>{
+
+ try {
+  const response = await fetch('http://localhost:3000/api/students')
+  const result =await response.json()
+  console.log('result',result);
+  setData(result)
+ } catch (error) {
+  console.log(error);
+ }
+ }
+
 
   return (
     <div className="bg-blue-500 ">
@@ -92,13 +105,13 @@ export default function page() {
 
         <br />
         <button onClick={submitHandler} className="bg-red-600 text-white font-bold py-1 ml-10 px-2 rounded-lg">Submit</button>
-        <button onClick={getHandler} className="bg-green-600 text-white font-bold py-1 ml-10 px-2 rounded-lg">See Students</button>
+        <button onClick={getData} className="bg-green-600 text-white font-bold py-1 ml-10 px-2 rounded-lg">See Students</button>
 
         {/* Display the fetched students */}
         <div>
           <h2>Fetched Students:</h2>
           <ul>
-            {students.map((student) => (
+            {data.map((student,index) => (
               <li key={student._id}>
                 Name: {student.name}, Age: {student.age}
               </li>

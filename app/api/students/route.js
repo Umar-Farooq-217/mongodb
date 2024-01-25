@@ -23,15 +23,16 @@ export const POST = async (req) => {
     }
 };
 
-export const GET = async (req) => {
+export const GET = async (req,route) => {
     try {
-        const body =await studentModel.find({})
+        const body =await studentModel.find()
         console.log('body',body);
 
 
-        return NextResponse.json({ message: 'submit',data:body });
+        return NextResponse.json({ message: 'submit' });
     } catch (error) {
-        return NextResponse.json({ message: 'something went wrong' });
+        console.log("error",error);
+        return NextResponse.json({ message: "error",error })
     }
 };
 
