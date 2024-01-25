@@ -54,29 +54,30 @@ export default function page() {
   };
 
   const getHandler = async () => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
 
-    var requestOptions = {
-      method: 'GET',
-      headers: myHeaders,
-      redirect: 'follow'
-    };
+  //   var myHeaders = new Headers();
+  //   myHeaders.append("Content-Type", "application/json");
 
-    try {
-      // Send the GET request
-      const response = await fetch("http://localhost:3000/api/students", requestOptions);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+  //   var requestOptions = {
+  //     method: 'GET',
+  //     headers: myHeaders,
+  //     redirect: 'follow'
+  //   };
 
-      const data = await response.json();
-      console.log('Data received from server:', data);
-      setStudents(data);
-    } catch (error) {
-      console.error('Error fetching students:', error);
-      alert('Error fetching students. Please check the console for details.');
-    }
+  //   try {
+  //     // Send the GET request
+  //     const response = await fetch("http://localhost:3000/api/students", requestOptions);
+  //     if (!response.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
+
+  //     const data = await response.json();
+  //     console.log('Data received from server:', data);
+  //     setStudents(data);
+  //   } catch (error) {
+  //     console.error('Error fetching students:', error);
+  //     alert('Error fetching students. Please check the console for details.');
+  //   }
   };
 
   return (
