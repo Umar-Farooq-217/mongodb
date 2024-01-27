@@ -23,18 +23,6 @@ export const POST = async (req) => {
     }
 };
 
-export const GET = async (req,route) => {
-    try {
-        const body =await studentModel.find()
-        console.log('body',body);
-
-
-        return NextResponse.json({ message: 'submit' });
-    } catch (error) {
-        console.log("error",error);
-        return NextResponse.json({ message: "error",error })
-    }
-};
 
 export const PUT = async(req)=>{
     try {
