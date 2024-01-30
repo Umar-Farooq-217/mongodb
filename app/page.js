@@ -81,6 +81,7 @@ export default function page() {
   };
   const [data , setData]= useState([])
  const getData= async()=>{
+ const date  = true
 
  try {
   const response = await fetch('http://localhost:3000/api/students')
